@@ -93,7 +93,7 @@ def getBorder(image):
     
     
 
-def checkCreateDTW(frame):
+def createDTW(frame1,frame2):
     pass
     
     
@@ -195,6 +195,7 @@ if __name__ == "__main__":
     
     for num_frame in range(39,len(frames)):
         print "Frame:", num_frame, "/", total_frames
+        print ""
         
         frame = frames[num_frame]
         
@@ -244,8 +245,31 @@ if __name__ == "__main__":
         print "dist_Opened:", dist_Opened
         print "dist_Pointer:", dist_Pointer
         print "dist_V:", dist_V
-        print "--"
+        print ""
+        print "Candidates Gestures:"
         
+        
+        max_euclidean_distance = 60
+        
+        if dist_C <= max_euclidean_distance:
+            print " - C"
+        
+        if dist_Closed <= max_euclidean_distance:
+            print " - Closed"
+        
+        if dist_Opened <= max_euclidean_distance:
+            print " - Opened"
+            
+            createDTW(border,center,border_Opened,center_Opened)
+            
+        if dist_Pointer <= max_euclidean_distance:
+            print " - Pointer"
+            
+        if dist_V <= max_euclidean_distance:
+            print " - V"
+        
+        print ""
+        print "--"
         
         if(center):
             border = cv2.cvtColor(border,cv2.COLOR_GRAY2RGB)
