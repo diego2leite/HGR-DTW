@@ -13,24 +13,6 @@ from os import listdir
 from os.path import isfile, join
 
 
-
-# border_C = None
-# center_C = None
-# 
-# border_Closed = None
-# center_Closed = None
-# 
-# border_Opened = None
-# center_Opened = None
-# 
-# border_Pointer = None
-# center_Pointer = None
-# 
-# border_V = None
-# center_V = None
-
-
-
 def getPalmCenter(frame,border):
     C0 = np.nonzero(border)[:][0]
     C1 = np.nonzero(border)[:][1]
@@ -93,7 +75,7 @@ def getBorder(image):
     
     
 
-def createDTW(frame1,frame2):
+def createDTW(border,center,border_ref,center_ref):
     pass
     
     
@@ -265,8 +247,12 @@ if __name__ == "__main__":
         if dist_Pointer <= max_euclidean_distance:
             print " - Pointer"
             
+            
+            
         if dist_V <= max_euclidean_distance:
             print " - V"
+            
+            
         
         print ""
         print "--"
